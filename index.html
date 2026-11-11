@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="description" content="2026·2027년 국방예산 프로그램별 재원 분석 대시보드">
+ <title>국방예산 인사이트 | 2027</title><link rel="stylesheet" href="styles.css">
+ <script defer src="data.js"></script><script defer src="core.js"></script><script defer src="app.js"></script>
+</head>
+<body>
+ <aside class="sidebar">
+  <a class="brand" href="#overview" aria-label="국방예산 인사이트 홈"><span class="brand-icon">▥</span><span>DEFENSE<br><b>INSIGHT</b></span></a>
+  <span class="nav-label">BUDGET EXPLORER</span>
+  <nav><a class="active" href="#overview"><span>◈</span> 예산 한눈에</a><a href="#structure"><span>▦</span> 재원 구성</a><a href="#changes"><span>↗</span> 증감 분석</a><a href="#details"><span>☷</span> 상세 데이터</a></nav>
+  <div class="sidebar-bottom"><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i></div><b>2027 정부안</b><p>숫자로 살펴보는<br>국방예산의 변화</p><span>2026 → 2027</span></div>
+ </aside>
+ <main>
+  <header class="topbar"><span>국방예산 <span class="slash">/</span> 프로그램별 재원</span><div><span class="status-dot"></span> 엑셀 데이터 기반 <span class="pill">2027 정부안</span></div></header>
+  <section class="hero" id="overview"><div><div class="eyebrow">DEFENSE BUDGET · 2026—2027</div><h1>국방예산, <span>한눈에 읽다.</span></h1><p>재원의 구성부터 프로그램별 변화까지, 필터로 원하는 예산을 탐색하세요.</p></div><div class="hero-stamp"><strong>2027</strong><span>국방예산 인사이트</span><div class="spectrum"></div></div></section>
+  <section class="filterbar" aria-label="데이터 필터">
+   <div class="filter-label"><span class="filter-icon">≋</span><b>필터</b></div>
+   <label>부문<select id="sector"><option value="">전체 부문</option></select></label>
+   <label>회계구분<select id="account"><option value="">전체 회계</option></select></label>
+   <label class="search-label">프로그램 검색<input id="search" type="search" placeholder="프로그램명 또는 구분 검색"></label>
+   <button id="reset" class="reset">↺ 초기화</button>
+  </section>
+  <div class="scope-line"><span id="scope" aria-live="polite"></span><span>금액 단위 <b>억 원</b> · 비율 소수점 1자리</span></div>
+  <section id="kpis" class="kpis" aria-label="주요 예산 지표"></section>
+  <section class="insight"><span class="spark">✦</span><p id="insight"></p><span class="insight-label">선택 범위 인사이트</span></section>
+  <div class="section-heading" id="structure"><div><div class="eyebrow">01 · BUDGET COMPOSITION</div><h2>어디에, 얼마나 쓰이나요?</h2></div><div class="year-switch" aria-label="구성 그래프 기준 연도"><button data-year="a" aria-pressed="false">2026년</button><button data-year="b" class="selected" aria-pressed="true">2027년</button></div></div>
+  <div class="chart-grid">
+   <article class="chart-card"><div class="card-head"><div><span class="chart-index blue">01</span><h3>부문별 예산 비교</h3><p>두 해의 규모를 나란히 비교합니다.</p></div><span class="chart-tag">연도 비교</span></div><div class="legend"><span><i style="background:#a5b4fc"></i>2026년</span><span><i style="background:#6558ee"></i>2027년</span></div><div id="sector-chart" class="chart"></div></article>
+   <article class="chart-card"><div class="card-head"><div><span class="chart-index teal">02</span><h3>회계별 재원 구성</h3><p><span class="year-label">2027</span>년 양수 금액 합계 기준 비중</p></div><span class="chart-tag">도넛 차트</span></div><div id="donut-chart" class="chart"></div><div class="chart-foot">음수 차감 항목은 비중에서 제외하고 별도로 표시합니다.</div></article>
+   <article class="chart-card wide"><div class="card-head"><div><span class="chart-index violet">03</span><h3>프로그램 예산 지도</h3><p>넓을수록 큰 예산 · <span class="year-label">2027</span>년 양수 항목만 표시</p></div><div class="legend sector-legend"></div></div><div id="treemap-chart" class="chart"></div></article>
+   <article class="chart-card"><div class="card-head"><div><span class="chart-index orange">04</span><h3>예산 규모 TOP 10</h3><p><span class="year-label">2027</span>년 예산이 큰 프로그램 순</p></div><span class="chart-tag">양수 항목</span></div><div id="ranking-chart" class="chart"></div></article>
+   <article class="chart-card"><div class="card-head"><div><span class="chart-index pink">05</span><h3>주요 프로그램의 두 해</h3><p>2027년 상위 8개 프로그램의 규모 변화</p></div><span class="chart-tag">덤벨 차트</span></div><div class="legend"><span><i style="background:#b6c3d6"></i>2026년</span><span><i style="background:#ee5e9a"></i>2027년</span></div><div id="dumbbell-chart" class="chart"></div></article>
+  </div>
+  <div class="section-heading" id="changes"><div><div class="eyebrow">02 · YEAR-OVER-YEAR CHANGE</div><h2>무엇이 달라졌나요?</h2></div><span class="section-meta">2027년 − 2026년</span></div>
+  <div class="chart-grid">
+   <article class="chart-card wide"><div class="card-head"><div><span class="chart-index teal">06</span><h3>예산 변화의 흐름</h3><p>2026년 합계에서 부문별 증감을 거쳐 2027년 합계까지</p></div><span class="chart-tag">워터폴 차트</span></div><div id="waterfall-chart" class="chart"></div></article>
+   <article class="chart-card"><div class="card-head"><div><span class="chart-index pink">07</span><h3>증감 규모 TOP 10</h3><p>절대 증감액 상위 항목 · 차감 항목 포함</p></div><div class="legend"><span><i style="background:#f077a5"></i>감소</span><span><i style="background:#20b7ad"></i>증가</span></div></div><div id="delta-chart" class="chart"></div></article>
+   <article class="chart-card"><div class="card-head"><div><span class="chart-index blue">08</span><h3>규모와 성장률</h3><p>가로: 2027년 예산 · 세로: 증감률 · 원 크기: 증감 절댓값</p></div></div><div id="scatter-chart" class="chart"></div><div class="chart-foot">양수 예산 항목만 표시 · 점에 마우스를 올려 상세 확인</div></article>
+   <article class="chart-card wide"><div class="card-head"><div><span class="chart-index violet">09</span><h3>프로그램 증감률 스펙트럼</h3><p>모든 선택 항목의 증감률 · 원자료와 같은 계산식: 증감 ÷ 2026년</p></div><div class="legend"><span><i style="background:#f077a5"></i>감소</span><span><i style="background:#20b7ad"></i>증가</span></div></div><div id="heatmap-chart" class="heatmap"></div><div class="chart-foot">음수 기준의 증감률은 차감액 크기의 변화를 나타냅니다. 금액 증감의 부호와 다를 수 있습니다.</div></article>
+  </div>
+  <section id="details" class="details"><div class="section-heading"><div><div class="eyebrow">03 · PROGRAM DATA</div><h2>숫자, 자세히 들여다보기</h2></div><button id="download" class="download">↓ 선택 데이터 CSV</button></div><div class="table-card"><div class="table-top"><span id="table-count"></span><span>열 제목을 클릭하면 정렬됩니다.</span></div><div class="table-scroll"><table><thead><tr><th><button data-sort="sector">부문</button></th><th><button data-sort="account">회계구분</button></th><th><button data-sort="group">구분</button></th><th><button data-sort="program">프로그램명</button></th><th class="num"><button data-sort="a">2026년</button></th><th class="num"><button data-sort="b">2027년</button></th><th class="num"><button data-sort="delta">증감</button></th><th class="num"><button data-sort="rate">%</button></th></tr></thead><tbody id="table-body"></tbody><tfoot id="table-foot"></tfoot></table></div></div></section>
+  <footer><div><b>DEFENSE INSIGHT</b><p>프로그램별_재원_2026_2027.xlsx · 32개 항목 · 2027년 정부안</p></div><p>엑셀의 세부 항목을 직접 합산합니다. 반올림된 원문 총재원과 1억 원 차이가 있습니다.<br>내부거래·보전지출은 음수로 합산하며, 구성 비중 그래프는 양수만 사용합니다.</p></footer>
+ </main><div id="tooltip" role="tooltip" hidden></div><noscript>대시보드를 보려면 브라우저에서 JavaScript를 활성화해 주세요.</noscript>
+</body></html>
